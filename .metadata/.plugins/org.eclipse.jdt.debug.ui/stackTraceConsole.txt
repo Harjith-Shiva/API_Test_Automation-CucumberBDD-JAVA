@@ -1,6 +1,10 @@
-org.junit.ComparisonFailure: expected:<[Bhelpur sixth cross]> but was:<[Tiruchirappalli]>
-	at org.junit.Assert.assertEquals(Assert.java:117)
-	at org.junit.Assert.assertEquals(Assert.java:146)
-	at stepDefinitions.stepDefinition.verify_address_updated_maps_to_using(stepDefinition.java:100)
-	at ✽.verify address updated maps to "Bhelpur sixth cross" using "getPlaceAPI"(file:///C:/Users/Harji/eclipse-workspace-API_Automation/End-to-End-API-tests/src/test/java/features/mapsValidations.feature:24)
+io.cucumber.junit.UndefinedStepException: The step 'after deleting the place verify that the "<delete_message>" is obtained using "getPlaceAPI"' is undefined.
+You can implement this step using the snippet(s) below:
+
+@Then("after deleting the place verify that the {string} is obtained using {string}")
+public void after_deleting_the_place_verify_that_the_is_obtained_using(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
 
