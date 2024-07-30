@@ -1,0 +1,20 @@
+package resources;
+
+public enum APIResources {
+	
+	public String resource;
+	
+	addPlaceAPI("/maps/api/place/add/json"),
+	getPlaceAPI("/maps/api/place/get/json"),
+	deletePlaceAPI("/maps/api/place/delete/json");
+	
+	APIResources(String resource)
+	{
+		this.resource= resource;
+	}
+	
+	public String getResource()
+	{
+		return resource;
+	}
+}

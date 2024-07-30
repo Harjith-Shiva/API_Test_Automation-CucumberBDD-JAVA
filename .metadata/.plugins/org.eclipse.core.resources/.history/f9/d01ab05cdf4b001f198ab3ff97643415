@@ -1,0 +1,26 @@
+Feature: Validating End To End Functionalities of the APIs in the E-commerce website
+
+    #Scenario Outline: Testing the login functionality in the E-commerce website
+        #Given The user is on the E-commerce website
+        #When The user logs in using "<Email>" and "<password>"
+        #Then The Response of the API should be "Login Successfully" 
+        #And statusCode should be 200
+        #And "Content-Type" should be "application/json; charset=utf-8"
+        #And "Server" should be "Apache/2.4.52 (Ubuntu)"
+        #
+        #
+        #Examples:
+        #|Email                   |password  |
+        #|harjith2000.a@gmail.com |Assbr5$vg |
+         
+         
+         Scenario Outline: Testing adding a product to the website is successful
+         Given the user adds a new product to the website using the authorization obtained from login API
+         When The user adds a new product using "<name>" "<category>" "<sub category>" "<price>" "<description>" "<product for>" and "<product Image>"
+         Then The product is added successfully and statusCode should be 200 and validating the headers
+         
+         
+         Examples:
+         |name           |category   |sub category       |price       |description           |product for     |                                 product Image|
+         |Gold Armour    |war        |Armour             |5000000     |Gold Armour           |Men             |C:\Users\Harji\OneDrive\karnan.jpg|
+        

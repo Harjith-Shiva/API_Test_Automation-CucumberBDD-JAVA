@@ -1,0 +1,71 @@
+package Pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+
+public class RegisterPage {
+    WebDriver driver;
+
+    public RegisterPage(WebDriver driver) {
+        this.driver = driver;
+    }
+
+    private By firstName = By.name("First Name");
+    private By lastName = By.name("Last Name");
+    private By email = By.name("Email");
+    private By phoneNumber = By.name("Phone Number");
+    private By occupation = By.name("Occupation");
+    private By genderMale = By.xpath("//input[@value='Male']");
+    private By genderFemale = By.xpath("//input[@value='Female']");
+    private By password = By.name("Password");
+    private By confirmPassword = By.name("Confirm Password");
+    private By registerButton = By.xpath("//button[text()='Register']");
+    private By successMessage = By.xpath("//*[contains(text(), 'Account Created Successfully')]");
+
+    public void setFirstName(String fName) {
+        driver.findElement(firstName).sendKeys(fName);
+    }
+
+    public void setLastName(String lName) {
+        driver.findElement(lastName).sendKeys(lName);
+    }
+
+    public void setEmail(String userEmail) {
+        driver.findElement(email).sendKeys(userEmail);
+    }
+
+    public void setPhoneNumber(String phone) {
+        driver.findElement(phoneNumber).sendKeys(phone);
+    }
+
+    public void setOccupation(String userOccupation) {
+        Select occupationDropdown = new Select(driver.findElement(occupation));
+        occupationDropdown.selectByVisibleText(userOccupation);
+    }
+
+    public void selectGender(String gender) {
+        if (gender.equalsIgnoreCase("male")) {
+            driver.findElement(genderMale).click();
+        } else if (gender.equalsIgnoreCase("female")) {
+            driver.findElement(genderFemale).click();
+        }
+    }
+
+    public void setPassword(String userPassword) {
+        driver.findElement(password).sendKeys(userPassword);
+    }
+
+    public void setConfirmPassword(String userConfirmPassword) {
+        driver.findElement(confirmPassword).sendKeys(userConfirmPassword);
+    }
+
+    public void clickRegisterButton() {
+        driver.findElement(registerButton).click();
+    }
+
+    public boolean isSuccessMessageDisplayed() {
+        return driver.findElement(successMessage).isDisplayed();
+    }
+}

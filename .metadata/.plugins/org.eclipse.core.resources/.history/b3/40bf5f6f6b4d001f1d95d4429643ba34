@@ -1,0 +1,8 @@
+package resources;
+
+public enum APIResources {
+	
+	AddPlaceAPI("/maps/api/place/add/json"),
+	GetPlaceAPI("/maps/api/place/get/json")
+
+}

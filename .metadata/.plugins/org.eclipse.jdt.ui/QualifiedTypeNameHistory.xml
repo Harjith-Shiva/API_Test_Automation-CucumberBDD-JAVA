@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="io.cucumber.junit.Cucumber"/>
+    <fullyQualifiedTypeName name="pojo.LoginRequest"/>
+    <fullyQualifiedTypeName name="junit.framework.Assert"/>
+    <fullyQualifiedTypeName name="io.restassured.response.Response"/>
+    <fullyQualifiedTypeName name="io.restassured.http.ContentType"/>
+    <fullyQualifiedTypeName name="io.restassured.filter.log.RequestLoggingFilter"/>
+    <fullyQualifiedTypeName name="io.restassured.filter.log.ResponseLoggingFilter"/>
+    <fullyQualifiedTypeName name="io.restassured.RestAssured"/>
+</qualifiedTypeNameHistroy>
