@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestRunner" project="End-to-End-API-tests" tests="1" started="1" failures="0" errors="1" ignored="0">
+  <testsuite name="cucumber.Options.TestRunner" time="6.117">
+    <testsuite name="End-to-End Validation of Google Maps APIs" time="6.117">
+      <testcase name="Verify if Delete Place functionality is working" classname="End-to-End Validation of Google Maps APIs" time="6.117">
+        <error>io.cucumber.junit.UndefinedStepException: The step 'after deleting the place verify that the "&lt;delete_message&gt;" is obtained using "getPlaceAPI"' is undefined.
+You can implement this step using the snippet(s) below:
+
+@Then("after deleting the place verify that the {string} is obtained using {string}")
+public void after_deleting_the_place_verify_that_the_is_obtained_using(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+&#13;
+&#13;
+</error>
+      </testcase>
+    </testsuite>
+  </testsuite>
+</testrun>

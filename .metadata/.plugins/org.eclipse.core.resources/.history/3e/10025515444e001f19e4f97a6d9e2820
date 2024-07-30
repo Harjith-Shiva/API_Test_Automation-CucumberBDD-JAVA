@@ -99,15 +99,6 @@ public class stepDefinition extends Utils {
 		
 		Assert.assertEquals(expectedAddressInResponseBody,getJsonPath(response,"address"));
 	}
-	
-	@Then("after deleting the place verify that the {string} is obtained using {string}")
-	public void after_deleting_the_place_verify_that_the_is_obtained_using(String expectedDeletedMessageInResponseBody, String resourceName) throws IOException {
-		
-		res =given().spec(requestSpecification()).queryParam("place_id", place_id);
-		user_calls_with_http_request(resourceName,"GET");
-		
-		Assert.assertEquals(expectedDeletedMessageInResponseBody,getJsonPath(response,"msg"));
-	}
 
 
 

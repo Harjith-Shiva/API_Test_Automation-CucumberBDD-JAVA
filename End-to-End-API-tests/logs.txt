@@ -12,9 +12,9 @@ Multiparts:		<none>
 Body:
 {
     "accuracy": 50,
-    "name": "Harjiths Home",
+    "name": "Harjith",
     "phone_number": "(+91) 983 893 3937",
-    "address": "Tiruchirappalli",
+    "address": "Trichy",
     "website": "https://rahulshettyacademy.com",
     "language": "Tamil",
     "location": {
@@ -27,7 +27,7 @@ Body:
     ]
 }
 HTTP/1.1 200 OK
-Date: Tue, 30 Jul 2024 05:27:00 GMT
+Date: Tue, 30 Jul 2024 07:27:35 GMT
 Server: Apache/2.4.52 (Ubuntu)
 Access-Control-Allow-Origin: *
 Access-Control-Allow-Methods: POST
@@ -40,17 +40,17 @@ Content-Type: application/json;charset=UTF-8
 
 {
     "status": "OK",
-    "place_id": "7b3c641c03697914839ff15b0a8f88ae",
+    "place_id": "9e2104191c10f4ebf9fb26e72e8647bf",
     "scope": "APP",
-    "reference": "638fcd1e7119e25cd67d6d4efaf2033d638fcd1e7119e25cd67d6d4efaf2033d",
-    "id": "638fcd1e7119e25cd67d6d4efaf2033d"
+    "reference": "4639c2ebb154e240caf0b2616435c2884639c2ebb154e240caf0b2616435c288",
+    "id": "4639c2ebb154e240caf0b2616435c288"
 }
 Request method:	GET
-Request URI:	https://rahulshettyacademy.com/maps/api/place/get/json?key=qaclick123&place_id=7b3c641c03697914839ff15b0a8f88ae
+Request URI:	https://rahulshettyacademy.com/maps/api/place/get/json?key=qaclick123&place_id=9e2104191c10f4ebf9fb26e72e8647bf
 Proxy:			<none>
 Request params:	<none>
 Query params:	key=qaclick123
-				place_id=7b3c641c03697914839ff15b0a8f88ae
+				place_id=9e2104191c10f4ebf9fb26e72e8647bf
 Form params:	<none>
 Path params:	<none>
 Headers:		Accept=*/*
@@ -59,13 +59,13 @@ Cookies:		<none>
 Multiparts:		<none>
 Body:			<none>
 HTTP/1.1 200 OK
-Date: Tue, 30 Jul 2024 05:27:01 GMT
+Date: Tue, 30 Jul 2024 07:27:36 GMT
 Server: Apache/2.4.52 (Ubuntu)
 Access-Control-Allow-Origin: *
 Access-Control-Allow-Methods: POST
 Access-Control-Max-Age: 3600
 Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With
-Content-Length: 254
+Content-Length: 239
 Keep-Alive: timeout=5, max=100
 Connection: Keep-Alive
 Content-Type: application/json;charset=UTF-8
@@ -76,19 +76,18 @@ Content-Type: application/json;charset=UTF-8
         "longitude": "33.427362"
     },
     "accuracy": "50",
-    "name": "Harjiths Home",
+    "name": "Harjith",
     "phone_number": "(+91) 983 893 3937",
-    "address": "Tiruchirappalli",
+    "address": "Trichy",
     "types": "shoe park,shop",
     "website": "https://rahulshettyacademy.com",
     "language": "Tamil"
 }
-Request method:	PUT
-Request URI:	https://rahulshettyacademy.com/maps/api/place/update/json?key=qaclick123&place_id=7b3c641c03697914839ff15b0a8f88ae
+Request method:	POST
+Request URI:	https://rahulshettyacademy.com/maps/api/place/delete/json?key=qaclick123
 Proxy:			<none>
 Request params:	<none>
 Query params:	key=qaclick123
-				place_id=7b3c641c03697914839ff15b0a8f88ae
 Form params:	<none>
 Path params:	<none>
 Headers:		Accept=*/*
@@ -97,31 +96,29 @@ Cookies:		<none>
 Multiparts:		<none>
 Body:
 {
-    "place_id": "7b3c641c03697914839ff15b0a8f88ae",
-    "address": "Bhelpur sixth cross",
-    "key": "qaclick123"
+    "place_id": "9e2104191c10f4ebf9fb26e72e8647bf"
 }
 HTTP/1.1 200 OK
-Date: Tue, 30 Jul 2024 05:27:02 GMT
+Date: Tue, 30 Jul 2024 07:27:37 GMT
 Server: Apache/2.4.52 (Ubuntu)
 Access-Control-Allow-Origin: *
 Access-Control-Allow-Methods: POST
 Access-Control-Max-Age: 3600
 Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With
-Content-Length: 38
+Content-Length: 15
 Keep-Alive: timeout=5, max=100
 Connection: Keep-Alive
 Content-Type: application/json;charset=UTF-8
 
 {
-    "msg": "Address successfully updated"
+    "status": "OK"
 }
 Request method:	GET
-Request URI:	https://rahulshettyacademy.com/maps/api/place/get/json?key=qaclick123&place_id=7b3c641c03697914839ff15b0a8f88ae
+Request URI:	https://rahulshettyacademy.com/maps/api/place/get/json?key=qaclick123&place_id=9e2104191c10f4ebf9fb26e72e8647bf
 Proxy:			<none>
 Request params:	<none>
 Query params:	key=qaclick123
-				place_id=7b3c641c03697914839ff15b0a8f88ae
+				place_id=9e2104191c10f4ebf9fb26e72e8647bf
 Form params:	<none>
 Path params:	<none>
 Headers:		Accept=*/*
@@ -129,28 +126,18 @@ Headers:		Accept=*/*
 Cookies:		<none>
 Multiparts:		<none>
 Body:			<none>
-HTTP/1.1 200 OK
-Date: Tue, 30 Jul 2024 05:27:04 GMT
+HTTP/1.1 404 Not Found
+Date: Tue, 30 Jul 2024 07:27:38 GMT
 Server: Apache/2.4.52 (Ubuntu)
 Access-Control-Allow-Origin: *
 Access-Control-Allow-Methods: POST
 Access-Control-Max-Age: 3600
 Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With
-Content-Length: 258
+Content-Length: 67
 Keep-Alive: timeout=5, max=100
 Connection: Keep-Alive
 Content-Type: application/json;charset=UTF-8
 
 {
-    "location": {
-        "latitude": "-38.383494",
-        "longitude": "33.427362"
-    },
-    "accuracy": "50",
-    "name": "Harjiths Home",
-    "phone_number": "(+91) 983 893 3937",
-    "address": "Bhelpur sixth cross",
-    "types": "shoe park,shop",
-    "website": "https://rahulshettyacademy.com",
-    "language": "Tamil"
+    "msg": "Get operation failed, looks like place_id  doesn't exists"
 }
