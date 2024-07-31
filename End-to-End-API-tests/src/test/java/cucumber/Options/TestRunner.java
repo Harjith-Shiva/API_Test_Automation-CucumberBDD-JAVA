@@ -10,7 +10,8 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions
 (
 features="src/test/java/features/mapsValidations.feature"
- ,glue= "stepDefinitions"
+,plugin ="json:target/jsonReports/cucumber-report.json"  
+,glue= "stepDefinitions"
  ,tags = "@DeletePlace"
 )
 public class TestRunner {

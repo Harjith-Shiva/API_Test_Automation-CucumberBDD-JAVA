@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="1" failures="0" name="cucumber.Options.TestRunner" time="7.364" errors="0" skipped="0">
+<testsuite tests="1" failures="0" name="cucumber.Options.TestRunner" time="7.645" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="18.0.1.1+2-6"/>
@@ -39,12 +39,11 @@
     <property name="user.timezone" value="Europe/Riga"/>
     <property name="file.encoding" value="UTF-8"/>
     <property name="java.specification.version" value="18"/>
-    <property name="cucumber.filter.tags" value="@DeletePlace"/>
     <property name="user.name" value="Harji"/>
     <property name="java.class.path" value="C:\Users\Harji\apache-maven-3.8.8\boot\plexus-classworlds-2.6.0.jar"/>
     <property name="java.vm.specification.version" value="18"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher test -Dcucumber.filter.tags=@DeletePlace"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher test verify"/>
     <property name="java.home" value="C:\Program Files\Java\jdk-18.0.1.1"/>
     <property name="user.language" value="en"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
@@ -52,13 +51,15 @@
     <property name="java.version" value="18.0.1.1"/>
     <property name="native.encoding" value="Cp1252"/>
     <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="sun.stderr.encoding" value="cp850"/>
     <property name="maven.home" value="C:\Users\Harji\apache-maven-3.8.8"/>
     <property name="file.separator" value="\"/>
     <property name="java.version.date" value="2022-04-22"/>
     <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.stdout.encoding" value="cp850"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="Validating Place API&apos;s" name="Verify if Delete Place functionality is working" time="7.364"/>
+  <testcase classname="End-to-End Validation of Google Maps APIs" name="Verify if Delete Place functionality is working" time="7.645"/>
 </testsuite>
