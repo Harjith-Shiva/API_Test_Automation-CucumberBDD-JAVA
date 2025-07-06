@@ -1,0 +1,9 @@
+package pojo;
+
+public class CreateOrder {
+
+	private List<Orders> orders;
+	private String productOrderId;
+	private String message;
+	
+}

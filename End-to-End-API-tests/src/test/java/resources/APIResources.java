@@ -7,7 +7,12 @@ public enum APIResources {
 	addPlaceAPI("/maps/api/place/add/json"),
 	getPlaceAPI("/maps/api/place/get/json"),
 	deletePlaceAPI("/maps/api/place/delete/json"),
-	updatePlaceAPI("/maps/api/place/update/json");
+	updatePlaceAPI("/maps/api/place/update/json"),
+	loginAPI("/api/ecom/auth/login"),
+	createProductAPI("/api/ecom/product/add-product"),
+	createOrderAPI("/api/ecom/order/create-order"),
+	viewOrderDetailsAPI("/api/ecom/order/get-orders-details"),
+	deleteProductAPI("/api/ecom/product/delete-product/{id}");
 	
 	private String resource;
 	

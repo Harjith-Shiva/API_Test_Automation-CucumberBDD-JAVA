@@ -1,0 +1,43 @@
+Feature: End-to-End Validation of eCommerce APIs
+
+
+@test
+Scenario Outline: login to the eCommerce site and obtain session token
+    Given client credentials "<username>" and "<password>"
+    When user calls "loginAPI" with "POST" http request
+	  Then the API call got success with status code 200
+	  And "message" in response body is "Login Successfully"
+	  And verify that "token" is present in the response body and is NOT NULL
+	  
+Examples:
+|username             |password    |
+|harjith27@hotmail.com|Harjith_123#|
+
+@test
+Scenario: Add a new product listing to the ECom site using the session token obatined
+        Given The session token and Body for createProductAPI 
+        When user calls "createProductAPI" with "POST" http request
+	      Then the API call got success with status code 201
+	      And "message" in response body is "Product Added Successfully"
+	      And verify that "productId" is present in the response body is NOT NULL
+	      
+@test
+Scenario: Create an order for the product that was created
+        Given The session token and Body for createOrderAPI
+        When user calls "createOrderAPI" with "POST" http request
+	      Then the API call got success with status code 201
+	      And "message" in response body is "Order Placed Successfully"
+	      And verify that "productOrderId" is present in the response body is NOT NULL
+	      And verify that "orders" is present in the response body is NOT NULL
+	      
+
+Scenario: view and verify the order placed for the product that was created
+        Given The session token and Body for viewOrderDetailsAPI
+        When user calls "viewOrderDetailsAPI" with "GET" http request
+	      Then the API call got success with status code 200
+	      And "message" in response body is "Product Added Successfully"
+	      And verify that "orderById" is present in the response body is NOT NULL
+	      And verify that "orderBy" is present in the response body is NOT NULL
+	      And verify that "orderBy" is present in the response body is "<username>"
+	      And verify that "productOrderedId" in the response body is "productId" 
+	      

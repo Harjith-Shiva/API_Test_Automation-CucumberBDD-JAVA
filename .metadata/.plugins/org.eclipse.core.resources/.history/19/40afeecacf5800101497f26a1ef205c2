@@ -1,0 +1,124 @@
+package eComStepDefinitions;
+
+import io.cucumber.java.en.Given;
+import io.restassured.specification.RequestSpecification;
+import resources.TestDataBuild;
+import resources.Utils;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import io.restassured.builder.ResponseSpecBuilder;
+import io.restassured.http.*;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+import io.restassured.specification.ResponseSpecification;
+import static io.restassured.RestAssured.*;
+
+import java.io.IOException;
+import java.util.List;
+
+import org.junit.Assert;
+
+import resources.APIResources;
+import pojo.*;
+
+
+public class eComStepDefinition extends Utils {
+	
+	RequestSpecification req;
+	TestDataBuild data = new TestDataBuild();
+	static Response response;
+	private static String sessionToken;
+	private static String userID;
+	private static String productID;
+	private static List<String> orderID;
+	CreateOrder order = new CreateOrder();
+	ViewOrderDetails orderDetails = new ViewOrderDetails();
+	@Given("client credentials {string} and {string}")
+	public void client_credentials_and(String username, String password) throws IOException 
+	
+	{
+		req = given().spec(requestSpecificationForEcom()).body(data.getLoginBody(username,password)).header("Content-Type","application/json");
+	}
+	
+	@When("user calls {string} with {string} http request")
+	public void users_calls_with_http_request(String resource, String httpMethod) {
+	  
+		if(httpMethod.equalsIgnoreCase("POST"))
+			 response =req.when().post(APIResources.valueOf(resource).getResource());
+			else if(httpMethod.equalsIgnoreCase("GET"))
+				 response =req.when().get(APIResources.valueOf(resource).getResource());
+			else if(httpMethod.equalsIgnoreCase("PUT"))
+				response = req.when().put(APIResources.valueOf(resource).getResource());
+			else if(httpMethod.equalsIgnoreCase("DELETE"))
+				response = req.when().delete(APIResources.valueOf(resource).getResource());
+	
+		
+		   
+	}
+
+	@Then("the API call got success with status code {int}")
+	public void thes_api_call_got_success_with_status_code(Integer expectedStatusCode) 
+	{
+		Assert.assertEquals(response.getStatusCode(),expectedStatusCode.intValue());
+	}
+
+	@Then("{string} in response body is {string}")
+	public void ins_response_body_is(String keyValue, String Expectedvalue) 
+	{
+		Assert.assertEquals(getJsonPath(response,keyValue),Expectedvalue);
+	}
+	
+	@Given("The session token and Body for createProductAPI")
+	public void the_session_token_and_body_for_create_product_api() throws IOException {
+		
+		sessionToken= getJsonPath(response,"token");
+		userID= getJsonPath(response,"userId");
+		req = given().spec(requestSpecificationForEcom()).header("Authorization",sessionToken);
+		req= data.getCreateProductBody(req,userID);
+	}
+	
+	@Then("verify that {string} is present in the response body is NOT NULL")
+	public void verify_that_is_present_in_the_response_body(String fieldName) 
+	{
+		Assert.assertTrue(verifyJsonfeildInResponseBody(response,fieldName));
+		Assert.assertNotNull(verifyJsonfeildIsNotNullInResponseBody(response,fieldName),"The field "+fieldName+" is NULL");;
+		
+	}
+	
+
+	@Given("The session token and Body for createOrderAPI")
+	public void the_session_token_and_body_for_create_order_api() throws IOException {
+		
+		productID=getJsonPath(response,"productId");
+		req = given().spec(requestSpecificationForEcom()).header("Content-Type","application/json")
+			  .header("Authorization",sessionToken).body(data.getCreateOrderBody(productID));
+		
+	}
+	
+	@Given("The session token")
+	public void the_session_token() throws IOException 
+	{
+		order = response.as(CreateOrder.class);
+		orderID = order.getOrders();
+		req = given().spec(requestSpecificationForEcom()).header("Content-Type","application/json")
+				  .header("Authorization",sessionToken).queryParam("id", orderID.get(0));
+	}
+
+	@Then("verify that {string} is present in the response body is {string}")
+	public void verify_that_is_present_in_the_response_body_is(String actual, String expected) 
+	{
+		orderDetails = response.as(ViewOrderDetails.class);
+	    Assert.assertEquals(getJsonPath(response,actual), expected);
+		
+	}
+	
+	@Then("verify that {string} in the response body is the productID created by createProductAPI")
+	public void verify_that_in_the_response_body_is_the_product_id_created_by_create_product_api(String actual) 
+	
+	{
+		Assert.assertEquals(getJsonPath(response,actual), productID);
+	}
+
+
+
+}

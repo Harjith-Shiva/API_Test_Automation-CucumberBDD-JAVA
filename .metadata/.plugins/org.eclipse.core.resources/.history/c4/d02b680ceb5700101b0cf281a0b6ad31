@@ -1,0 +1,102 @@
+package resources;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.util.NumberToTextConverter;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+public class ExcelDrivenData {
+
+	
+	public static HashMap<String,String> excelDrivenData(String sheetName, String apiNameColumn, String apiName) throws IOException
+	{
+		ArrayList<String> data = new ArrayList<>();
+		HashMap<String, String> dataMap = new HashMap<>();
+		FileInputStream fis = new FileInputStream("C:\\Users\\Harji\\Downloads\\dataForEcomAPIs.xlsx");
+		XSSFWorkbook workbook = new XSSFWorkbook(fis);
+		
+		int sheets = workbook.getNumberOfSheets();
+		
+		for(int i=0; i<sheets;i++)
+		{
+			if(workbook.getSheetName(i).equalsIgnoreCase(sheetName))
+			{
+				XSSFSheet sheet = workbook.getSheetAt(i);
+				
+				Iterator<Row> rows = sheet.iterator();
+				Row firstRow = rows.next();
+				
+				Iterator<Cell> cells = firstRow.cellIterator();
+				
+				int c=0;
+				int column = 0;
+				while(cells.hasNext())
+				{
+					Cell value = cells.next();
+					if(value.getStringCellValue().equalsIgnoreCase(apiNameColumn))
+					{
+						column = c;
+					}
+					
+					c++;
+				}
+				
+				System.out.println(column);
+				
+				Iterator<Cell> header = firstRow.cellIterator();
+				while (rows.hasNext())
+				{
+					Row r = rows.next();
+					if(r.getCell(column).getStringCellValue().equalsIgnoreCase(apiName))
+					{
+						Iterator<Cell> cell = r.cellIterator();
+						
+						
+						while(cell.hasNext())
+						{
+							Cell fieldName = header.next();
+							Cell cellData = cell.next();
+							if(cellData.getCellType()==CellType.STRING)
+							{
+//							data.add(cellData.getStringCellValue());
+//							System.out.println(cellData.getStringCellValue());
+							dataMap.put(fieldName.getStringCellValue(),cellData.getStringCellValue());
+							}
+							else 
+							{
+//							data.add(NumberToTextConverter.toText(cellData.getNumericCellValue()));
+//							System.out.println(cellData.getNumericCellValue());
+							dataMap.put(fieldName.getStringCellValue(),NumberToTextConverter.toText(cellData.getNumericCellValue()));
+							}
+							
+						}
+					}
+				}
+			}
+		}
+		
+		return dataMap;
+		
+	}
+	
+	public static void main(String[] args) throws IOException
+	{
+		getdataFromExcel("productPrice");
+		
+	}
+	
+	public String getdataFromExcel(String fieldName) throws IOException
+	{
+		HashMap<String,String> dataMap = excelDrivenData("createProductData","APIs","createProductAPI");
+		return dataMap.get(fieldName);
+		
+	}
+}

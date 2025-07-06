@@ -1,0 +1,13 @@
+Feature: End-to-End Validation of eCommerce APIs
+
+
+
+Scenario Outline: login to the eCommerce site and obtain session token
+    Given client credentials "<username>" and "<password>"
+    When users calls "loginAPI" with "POST" http request
+	  Then thes API call got success with status code 200
+	  And "message" ins response body is "Login Successfully"
+	  
+Examples:
+|username             |password    |
+|harjith27@hotmail.com|Harjith_123#|

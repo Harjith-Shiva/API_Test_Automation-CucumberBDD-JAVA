@@ -8,4 +8,7 @@
     <fullyQualifiedTypeName name="io.restassured.filter.log.RequestLoggingFilter"/>
     <fullyQualifiedTypeName name="io.restassured.filter.log.ResponseLoggingFilter"/>
     <fullyQualifiedTypeName name="io.restassured.RestAssured"/>
+    <fullyQualifiedTypeName name="org.apache.poi.ss.usermodel.CellType"/>
+    <fullyQualifiedTypeName name="org.apache.poi.ss.util.NumberToTextConverter"/>
+    <fullyQualifiedTypeName name="pojo.CreateOrder"/>
 </qualifiedTypeNameHistroy>

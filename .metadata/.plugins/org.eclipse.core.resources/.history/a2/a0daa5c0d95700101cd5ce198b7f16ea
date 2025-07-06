@@ -1,0 +1,79 @@
+package resources;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Iterator;
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+public class ExcelDrivenData {
+
+	
+	public static void excelDrivenData() throws IOException
+	{
+		ArrayList<String> data = new ArrayList<>();
+		FileInputStream fis = new FileInputStream("C:\\Users\\Harji\\Downloads\\dataForEcomAPIs.xlsx");
+		XSSFWorkbook workbook = new XSSFWorkbook(fis);
+		
+		int sheets = workbook.getNumberOfSheets();
+		
+		for(int i=0; i<sheets;i++)
+		{
+			if(workbook.getSheetName(i).equalsIgnoreCase("createProductData"))
+			{
+				XSSFSheet sheet = workbook.getSheetAt(i);
+				
+				Iterator<Row> rows = sheet.iterator();
+				Row firstRow = rows.next();
+				
+				Iterator<Cell> cells = firstRow.cellIterator();
+				
+				int c=0;
+				int column = 0;
+				while(cells.hasNext())
+				{
+					Cell value = cells.next();
+					if(value.getStringCellValue().equalsIgnoreCase("APIs"))
+					{
+						column = c;
+					}
+					
+					c++;
+				}
+				
+				System.out.println(column);
+				
+				
+				while (rows.hasNext())
+				{
+					Row r = rows.next();
+					if(r.getCell(column).getStringCellValue().equalsIgnoreCase("createProductAPI"))
+					{
+						Iterator<Cell> cellData = r.cellIterator();
+						
+						while(cellData.hasNext())
+						{
+							
+							if(cellData.next().getCellType()==CellType.STRING)
+							System.out.println(cellData.next().getStringCellValue());
+							else
+							System.out.println(cellData.next().getNumericCellValue());
+						}
+					}
+				}
+			}
+		}
+		
+		
+		
+	}
+	
+	public static void main(String[] args) throws IOException
+	{
+		excelDrivenData();
+	}
+}

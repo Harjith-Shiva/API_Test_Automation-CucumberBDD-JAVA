@@ -3,6 +3,7 @@ package resources;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.Map;
 import java.util.Properties;
 
 import io.restassured.RestAssured;
@@ -14,6 +15,11 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
+import pojo.CreateOrder;
+import pojo.ViewOrderDetails;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class Utils {
 	
@@ -37,9 +43,9 @@ public class Utils {
 	
 	public String getJsonPath(Response response, String key)
 	{
-		JsonPath js = new JsonPath(response.asString());
+		JsonPath jP = new JsonPath(response.asString());
 		
-		return js.get(key).toString();
+		return jP.get(key).toString();
 		
 		
 	}
@@ -55,6 +61,59 @@ public class Utils {
 		
 		return property.getProperty(key);
 		
+		
+	}
+	
+	public RequestSpecification requestSpecificationForEcom() throws IOException
+	{
+		if(req == null)
+		{
+		PrintStream log = new PrintStream("logsOfEcom.txt");
+		
+		req = new RequestSpecBuilder().setBaseUri(getGlobalvalues("baseUrl"))
+				.addFilter(RequestLoggingFilter.logRequestTo(log))
+				.addFilter(ResponseLoggingFilter.logResponseTo(log))
+				.build();
+		
+		
+		return req;
+	}
+		return req;
+	}
+	
+	
+	public boolean verifyJsonfeildInResponseBody(Response response, String key)
+	{
+		JSONObject jO = new JSONObject(response.getBody().asString());
+		
+		Object value = jO.get(key);
+        if (value instanceof JSONArray) 
+        {
+        	JSONArray arr = (JSONArray) value;
+        	return arr.length() > 0;
+        }
+        
+		return jO.has(key);
+	}
+	
+	public String verifyJsonfeildIsNotNullInResponseBody(Response response, String key)
+	{
+		JSONObject jO = new JSONObject(response.getBody().asString());
+		
+		return jO.optString(key);
+		
+		
+	}
+	
+	public static  <T> T extractAsPojoClassFromResponse(Response response, String apiName)
+	{
+		Map<String, Class<?>> apiPojoMap = Map.of(
+			    "vieworderdetails", ViewOrderDetails.class,
+			    "createorder", CreateOrder.class
+			);
+		
+		Class<?> pojoClass = apiPojoMap.get(apiName.toLowerCase());
+		return (T) response.as(pojoClass);
 		
 	}
 	

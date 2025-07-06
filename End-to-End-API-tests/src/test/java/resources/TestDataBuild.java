@@ -1,8 +1,11 @@
 package resources;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.restassured.specification.RequestSpecification;
 import pojo.AddPlace;
 import pojo.Location;
 import pojo.UpdatePlace;
@@ -45,4 +48,40 @@ public class TestDataBuild {
 		
 		return uP;
 	}
+	
+	public String getLoginBody(String username, String password)
+	{
+		return "{\r\n"
+				+ "    \"userEmail\": \""+username+"\",\r\n"
+				+ "    \"userPassword\": \""+password+"\"\r\n"
+				+ "}";
+	}
+	
+	
+	public String getCreateOrderBody(String productID)
+	{
+		return "{\r\n"
+				+ "    \"orders\": [\r\n"
+				+ "        {\r\n"
+				+ "            \"country\": \"India\",\r\n"
+				+ "            \"productOrderedId\": \""+productID+"\"\r\n"
+				+ "        }\r\n"
+				+ "    ]\r\n"
+				+ "}";
+	}
+
+	public RequestSpecification getCreateProductBody(RequestSpecification requestSpec, String userID) throws IOException
+	{
+		return requestSpec
+		.param("productName", ExcelDrivenData.getdataFromExcel("productName"))
+		.param("productAddedBy",userID)
+		.param("productCategory", ExcelDrivenData.getdataFromExcel("productCategory"))
+		.param("productSubCategory", ExcelDrivenData.getdataFromExcel("productSubCategory"))
+		.param("productPrice", ExcelDrivenData.getdataFromExcel("productPrice"))
+		.param("productDescription", ExcelDrivenData.getdataFromExcel("productDescription"))
+		.param("productFor", ExcelDrivenData.getdataFromExcel("productFor"))
+		.multiPart("productImage", new File(ExcelDrivenData.getdataFromExcel("productImage")));
+	}
+	
+	
 }

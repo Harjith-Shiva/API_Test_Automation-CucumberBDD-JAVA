@@ -1,10 +1,6 @@
-io.cucumber.junit.UndefinedStepException: The step 'after deleting the place verify that the "<delete_message>" is obtained using "getPlaceAPI"' is undefined.
-You can implement this step using the snippet(s) below:
-
-@Then("after deleting the place verify that the {string} is obtained using {string}")
-public void after_deleting_the_place_verify_that_the_is_obtained_using(String string, String string2) {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-
+org.junit.ComparisonFailure: expected:<[Product Deleted] Successfully> but was:<[Orders fetched for customer] Successfully>
+	at org.junit.Assert.assertEquals(Assert.java:117)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at eComStepDefinitions.eComStepDefinition.ins_response_body_is(eComStepDefinition.java:68)
+	at ✽."message" in response body is "Orders fetched for customer Successfully"(file:///C:/Users/Harji/eclipse-workspace-API_Automation/End-to-End-API-tests/src/test/java/features/eCommerce.feature:53)
 

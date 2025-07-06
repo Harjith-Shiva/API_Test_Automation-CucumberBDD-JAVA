@@ -62,14 +62,10 @@
 	</section>
 	<section name="MavenProjectWizardArtifactPage">
 		<list key="groupId">
-			<item value="testing"/>
-			<item value="Ecommerce_Application"/>
 		</list>
 		<list key="name">
 		</list>
 		<list key="artifactId">
-			<item value="testing"/>
-			<item value="End-to-End-API-tests"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
